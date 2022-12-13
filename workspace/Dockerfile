@@ -1782,6 +1782,18 @@ RUN if [ ${INSTALL_DNSUTILS} = true ]; then \
     apt-get update && apt-get install -y dnsutils \
 ;fi
 
+###########################################################################
+# Firefox:
+###########################################################################
+
+USER root
+
+ARG INSTALL_FIREFOX=false
+
+RUN if [ ${INSTALL_FIREFOX} = true ]; then \
+    apt-get update && apt-get install -y --no-install-recommends firefox \
+;fi
+
 #
 #--------------------------------------------------------------------------
 # Final Touch

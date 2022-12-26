@@ -61,6 +61,7 @@ services:
     workspace:
       build:
         context: ./workspace
+        shm_size: "256mb"
         args:
           - CHANGE_SOURCE=${CHANGE_SOURCE}
           - SHELL_OH_MY_ZSH=${SHELL_OH_MY_ZSH}
@@ -179,6 +180,7 @@ services:
           - http_proxy
           - https_proxy
           - no_proxy
+          - INSTALL_FIREFOX=${WORKSPACE_INSTALL_FIREFOX}
       volumes:
         - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}${APP_CODE_CONTAINER_FLAG}
         - docker-in-docker:/certs/client
@@ -206,6 +208,7 @@ services:
         - backend
       links:
         - docker-in-docker
+      shm_size: "256mb"
 
 ### PHP-FPM ##############################################
     php-fpm:
